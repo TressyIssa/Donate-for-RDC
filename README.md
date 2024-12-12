@@ -122,8 +122,11 @@ une transaction à l’aide de son portefeuille électronique MetaMask.
 - **3. Déclenchement de l'evenement de transation sur MetaMask grâce à Web3**
 ![WhatsApp Image 2024-12-10 at 19 54 15](https://github.com/user-attachments/assets/7cbfa4cb-e384-4f36-b78a-59d06460db3b)
 
-- **Nous voyons la présence du hash de la Transaction
+- **Nous voyons la présence du hash de la Transaction**
   ![WhatsApp Image 2024-12-10 at 19 54 16 (1)](https://github.com/user-attachments/assets/9a9206fe-471a-49bd-9f2b-3e058535bb4c)
+  
+- **Registre distribuer**
+  ![WhatsApp Image 2024-12-10 at 20 49 07](https://github.com/user-attachments/assets/53b92eff-5b81-4e7f-b6ff-e72c7f9b33c6)
 
 ## Contribution
 Contributions are welcome! Please follow these steps:
