@@ -45,11 +45,7 @@ Let's install a local blockchain where we can test all our stuff.
 
    ![ganac](https://github.com/user-attachments/assets/d02243dd-4fbf-4b06-a478-86c37bbf89d8)
    
-2. Create a new Workspace
-   
-   ![ganac](https://github.com/user-attachments/assets/efff03e7-eb32-4766-b87a-bcc070851d42)
-   
-3. Here we have it, our own local blockchain
+2. Here we have it, our own local blockchain
    ![ganache-3](https://github.com/user-attachments/assets/3bd28bdd-d8d8-45e3-af8b-5fa4842c4f5d)
 So as of now we have our Crypto wallet set up done, and our Local Blockchain setup done; but how do we connect these two ?
 
