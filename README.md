@@ -1,4 +1,4 @@
-# ChatBot de Suivi des Performances des connaissances scolaires avec LLM et RDF Cube.
+# Plateforme de Don basé sur la Blockchain | Destiné aux sinistré de la RDC .
 
 Bienvenue dans notre projet qui combine des **Modèles de Langage de Grande Taille (LLM)** et des **Cubes RDF** pour offrir une solution innovante de suivi des performances éducatives. Ce projet permet de structurer des données éducatives et d'utiliser l'intelligence artificielle pour produire des analyses et des recommandations personnalisées en fonction des performances des étudiants.
 
