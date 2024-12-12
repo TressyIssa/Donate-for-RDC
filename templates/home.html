@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme de Don</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #4caf50, #81c784);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navbar */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #81c784;
+            transform: scale(1.05);
+        }
+
+        /* Dropdown menu */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 20px;
+        }
+
+        /* Section */
+        section {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #4caf50;
+        }
+
+        /* Transactions Table */
+        .transactions {
+            width: 100%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .transactions-header {
+            background-color: #4caf50;
+            color: #fff;
+            text-align: left;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .transactions-body {
+            max-height: 300px; /* Hauteur fixe pour activer le défilement */
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background-color: #f4f4f4;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .transaction-amount {
+            color: #27ae60;
+        }
+        .form-container {
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Plateforme de Don</h1>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">À propos</a></li>
+            <li>
+                <a href="#">Projets</a>
+                <ul>
+                    {% for projet in projets %}
+                    <li><a href="#">{{ projet.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><a href="#">Transactions</a></li>
+            <li>
+                {% if request.user.is_authenticated %}
+                <a href="#">{{ request.user.email }}</a>
+                {% else %}
+                <a class="btn btn-outline-primary btn-sm" href="{% url 'login' %}">Se connecter</a>
+                {% endif %}
+            </li>
+            <li>
+                <a class="btn btn-primary btn-sm" href="{% url 'formdon' %}" id="donate-btn">Faire un Don</a>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Se deconnecter</a></li>
+                {% else %}
+                
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Transactions Section -->
+    <section>
+        <h2>Bienvenue sur notre plateforme</h2>
+        <p>Faites un don ou suivez vos projets facilement.</p>
+
+        <!-- Transactions Table -->
+        <div class="transactions">
+            <div class="transactions-header">Transactions Récentes</div>
+            <div class="transactions-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Adresse</th>
+                            <th>Date</th>
+                            <th>Montant</th>
+                            <th>Hash</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for don in dons %}
+                        <tr>
+                            <td>{{ don.receiver }}</td>
+                            <td>{{ don.date }}</td>
+                            <td class="transaction-amount">$ {{ don.montant }}</td>
+                            <td>{{ don.hash }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">Aucune transaction trouvée</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Plateforme de Don. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<header>
+    <h1>Plateforme de donation</h1>
+</header>
+<nav>
+    <ul>
+        <li>
+            <a href="">Accueil</a>
+        </li>
+        <li><a href="#">Galerie</a></li>
+        <li><a href="#">À propos</a></li>
+        <li>
+            <a href="#">Projets</a>
+            <ul>
+                {% for projet in projets%}
+                <li><a href="#">{{projet.name}}</a></li>
+                {% endfor%}
+            </ul>
+        </li>
+        <li><a href="#">Transactions</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="#">{{request.user.email}}</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Se connecter</a></li>
+        {% endif %}
+        <li></br><a href="{% url 'formdon' %}" id="donate-btn">Faire un Don</a></br></li>
+    </ul>
+</nav>

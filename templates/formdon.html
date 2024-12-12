@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Transfert d'Ether</title>
+    <style>
+        /* Style de base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .all-donations {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        /* Style de la liste des transactions */
+        .transactions {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+
+        .transaction-item span {
+            font-weight: bold;
+        }
+
+        .transaction-amount {
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="all-donations">
+        <a href="{% url 'home' %}">
+            <button>Registre Public</button>
+        </a>
+    </div>
+
+    <div class="container">
+        <h2>Transfert d'Ether</h2>
+        <form id="transferForm" onsubmit="event.preventDefault(); sendTransaction();">
+            <label for="recipient">Adresse du Destinataire :</label>
+            <input type="text" id="recipient" placeholder="Entrez l'adresse du destinataire" required>
+
+            <label for="amount">Montant (USD) :</label>
+            <input type="number" id="amount" step="0.01" min="0.01" placeholder="Entrez le montant en USD" required>
+
+            <button type="submit">Envoyer</button>
+        </form>
+
+        <p id="status"></p>
+    </div>
+
+    <div class="transactions">
+        <h3>Don éffectué</h3>
+        <div id="transactionList">
+            <!-- Les transactions seront ajoutées ici -->
+        </div>
+    </div>
+
+    <!-- Intégration de Web3.js directement depuis le CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        if (typeof window.ethereum !== 'undefined') {
+            var web3 = new Web3(window.ethereum);
+            console.log("MetaMask est installé et Web3 est chargé.");
+        } else {
+            alert("MetaMask n'est pas installé ! Veuillez l'installer pour continuer.");
+        }
+
+        async function sendTransaction() {
+            document.getElementById('status').innerHTML = "<div class='loading'>Envoi reussi veillez consulter le registre</div>";
+            
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await ethereum.request({ method: 'eth_requestAccounts' });
+
+                    const accounts = await web3.eth.getAccounts();
+                    const sender = accounts[0];
+                    const recipient = document.getElementById('recipient').value;
+                    const amount = document.getElementById('amount').value;
+
+                    if (!web3.utils.isAddress(recipient)) {
+                        throw new Error("L'adresse du destinataire est invalide.");
+                    }
+
+                    const valueInWei = web3.utils.toWei(amount, 'ether');
+                    let trans_id = "";
+
+                    $.ajax({
+                        type : "POST",
+                        url: "{% url 'save_transaction' %}",
+                        data: {
+                            sender: sender,
+                            recipient: recipient,
+                            amount: amount,
+                            csrfmiddlewaretoken: '{{ csrf_token }}',
+                            dataType: "json",
+                        },
+            
+                        success: function(data){
+                            console.log(data);
+                        
+                            trans_id = data.trans_id
+                            
+                            console.log(trans_id)
+
+                        },
+            
+                        error: function(data) {
+                            console.log(data);
+                        }
+                    });
+
+                    web3.eth.sendTransaction({
+                        from: sender,
+                        to: recipient,
+                        value: valueInWei,
+                        gas: 21000
+                    })
+                    .on('transactionHash', function(hash) {
+                        console.log('je suis vednu ici')
+                        document.getElementById('status').innerHTML = `<p class="success">Transaction envoyée avec succès !<br>Hash: ${hash}</p>`;
+                        addTransactionToList(recipient, amount, hash);
+
+                        console.log(trans_id)
+
+                        if (trans_id) {
+                            $.ajax({
+                                type : "POST",
+                                url: "{% url 'update_transaction' %}",
+                                data: {
+                                    id: trans_id,
+                                    hash: hash,
+                                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                                    dataType: "json",
+                                },
+                    
+                                success: function(data){
+                                    console.log(data);
+                                },
+                    
+                                error: function(data) {
+                                    console.log(data);
+                                }
+                            });
+                            
+                        }
+
+    
+                    })
+                    .on('error', function(error) {
+                        document.getElementById('status').innerHTML = `<p class="error">Erreur lors de l'envoi : ${error.message}</p>`;
+                    });
+
+                } catch (error) {
+                    document.getElementById('status').innerHTML = `<p class="error">Erreur : ${error.message}</p>`;
+                }
+            } else {
+                alert("MetaMask n'est pas installé !");
+            }
+        }
+
+        function addTransactionToList(recipient, amount, hash) {
+            const transactionList = document.getElementById('transactionList');
+            const transactionItem = document.createElement('div');
+
+            transactionItem.className = 'transaction-item';
+            transactionItem.innerHTML = `
+                <span>Address: ${recipient}</span>
+                <span class="transaction-amount">$ ${amount}</span>
+            `;
+            transactionList.prepend(transactionItem);
+        }
+    </script>
+</body>
+</html>

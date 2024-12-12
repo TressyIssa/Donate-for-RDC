@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %} 
+    <div class="login">
+        <div class="form">
+            <h1>Connexion</h1>
+            <form class="login-form" method="POST" action="">
+            {% csrf_token %}
+       
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <div class="mb-3">
+                {{field}}
+                </div>
+                <span class="text-danger">{{ field.errors }}</span>
+            {% endfor %}
+                     </br>
+            <button type="submit">Se connecter</button>
+            </form> 
+            <p style="font-size: 13px;">Pas encore inscrit ?  <a href="{% url 'register' %}">S'inscrire</a></p>
+        </div>
+        
+       
+    </div>
+{% endblock content %}
+

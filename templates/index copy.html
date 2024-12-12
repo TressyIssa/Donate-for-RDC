@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+<script src="{% static 'js/script.js' %}"></script>
+{% block content %} 
+
+<div class="form-container">
+    <h1>Bienvenue dans notre plateforme de donation</h1>
+
+    <div class="auth-buttons">
+        <a href="{% url 'login' %}"><button>Se connecter</button></a>
+        <a href="{% url 'register' %}"><button>S'inscrire</button></a>
+    </div>
+</div>
+
+{% endblock content %}

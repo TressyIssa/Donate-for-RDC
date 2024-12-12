@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+    <div class="donation-form">
+        <h2>Ajoutez un Projet</h2>
+        <form action="#" method="POST">
+
+            {% csrf_token %}
+       
+        {% for field in form %}
+                              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                              <div class="mb-3">
+                                {{field}}
+                              </div>
+                              <span class="text-danger">{{ field.errors }}</span>
+        {% endfor %}
+
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+{% endblock content %}
