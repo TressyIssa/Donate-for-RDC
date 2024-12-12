@@ -75,9 +75,4 @@ For inquiries, please contact [issafiti02@gmail.com].
 
 
 
-   ```bash
-   OPEN_API_KEY=votre_cle_api
-
-
-
 
