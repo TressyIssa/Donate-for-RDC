@@ -2,7 +2,7 @@
 ![template2](https://github.com/user-attachments/assets/9cf00cf3-c241-49b5-b0f3-555dad76464c)
 
 ## Introduction
-This project addresses the challenges of transparency and traceability in managing donation funds in the Democratic Republic of Congo (DRC). Leveraging blockchain technology, this platform ensures secure, transparent, and real-time tracking of donations, thereby increasing donor confidence and reducing administrative costs.
+This project addresses the challenges of transparency and traceability in the management of donation funds in the Democratic Republic of Congo (DRC). Based on blockchain technology, this platform ensures secure, transparent and real-time monitoring of donations, thus increasing donor confidence by reducing transaction costs.
 
 ## Features
 - **Blockchain Technology**: Built on the Ethereum blockchain to provide an immutable and transparent record of all transactions.
@@ -110,6 +110,20 @@ You can create the frontend on your own or you can do the following.
 - **Project Listing**: View available projects and their details.
 - **Donation**: Make secure donations with real-time blockchain verification.
 - **Transaction Monitoring**: Track donation history and project updates.
+
+- **1. Test dans la plateforme**: connexion d'un Utilisateur
+  ![connexion](https://github.com/user-attachments/assets/c7d26d5d-ca49-40b4-8ea6-dbbe0d76d9d0)
+  
+- **2. Connexion**: L’utilisateur issafiti02@gmail.com vient de se connecter dans la plateforme. Il va maintenant passer
+une transaction à l’aide de son portefeuille électronique MetaMask.
+
+  ![WhatsApp Image 2024-12-10 at 19 54 16](https://github.com/user-attachments/assets/c5687b44-efb7-452a-9d13-124bbf8a38d5)
+  
+- **3. Déclenchement de l'evenement de transation sur MetaMask grâce à Web3**
+![WhatsApp Image 2024-12-10 at 19 54 15](https://github.com/user-attachments/assets/7cbfa4cb-e384-4f36-b78a-59d06460db3b)
+
+- **Nous voyons la présence du hash de la Transaction
+  ![WhatsApp Image 2024-12-10 at 19 54 16 (1)](https://github.com/user-attachments/assets/9a9206fe-471a-49bd-9f2b-3e058535bb4c)
 
 ## Contribution
 Contributions are welcome! Please follow these steps:
