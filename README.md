@@ -1,4 +1,5 @@
 # Plateforme de Don basé sur la Blockchain | Destiné aux sinistré de la RDC 
+![image](https://github.com/user-attachments/assets/3304e6c0-5a9e-4a85-a40f-09676a529b1a)
 
 ## Introduction
 This project addresses the challenges of transparency and traceability in managing donation funds in the Democratic Republic of Congo (DRC). Leveraging blockchain technology, this platform ensures secure, transparent, and real-time tracking of donations, thereby increasing donor confidence and reducing administrative costs.
