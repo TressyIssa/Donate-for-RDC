@@ -1,4 +1,4 @@
-# Plateforme de Don basé sur la Blockchain | Destiné aux sinistré de la RDC 
+# Plateforme de Don basé sur la Blockchain | Pour l'aide aux sinistré de la RDC 
 ![template2](https://github.com/user-attachments/assets/9cf00cf3-c241-49b5-b0f3-555dad76464c)
 
 ## Introduction
@@ -28,34 +28,48 @@ For this project we will install one of the most popular among them i.e. MetaMas
 The steps are as follows:
 
 - **1. Create a new wallet**
+- 
   ![met](https://github.com/user-attachments/assets/7e176a40-b9c0-4d57-98a0-ba6c690eb1cd)
 
 - **2.Here we have our crypto wallet**
+  
   ![metamaskjpg](https://github.com/user-attachments/assets/e885edc0-bab5-4c4d-8f89-42bdcb1bad46)
+  
 But as you may notice, we have no funds here 😔, and buying Ethereum could be quite expensive, so what can do we do ?
 
 Let's install a local blockchain where we can test all our stuff.
 
 ## Installing Ganache:
+
 1. Visit Truffle Suite to download Ganache
+
    ![ganac](https://github.com/user-attachments/assets/d02243dd-4fbf-4b06-a478-86c37bbf89d8)
+   
 2. Create a new Workspace
+   
    ![ganac](https://github.com/user-attachments/assets/efff03e7-eb32-4766-b87a-bcc070851d42)
+   
 3. Here we have it, our own local blockchain
    ![ganache-3](https://github.com/user-attachments/assets/3bd28bdd-d8d8-45e3-af8b-5fa4842c4f5d)
 So as of now we have our Crypto wallet set up done, and our Local Blockchain setup done; but how do we connect these two ?
 
 ## Connecting Ganache account to MetaMask Wallet:
+
 1. Click on the MetaMask extension and click add new network
    ![metamask-g](https://github.com/user-attachments/assets/2530c110-a4d8-4b84-899a-1ac0bdfd3a2f)
+   
 2. Add the following details, like this
    ![metamask-ganache-jpg](https://github.com/user-attachments/assets/2ac5053f-ab00-43b1-865b-50fbc8ec1aed)
+   
 3. And we are done with connecting our local blockchain to metamask wallet
    ![ganache-6](https://github.com/user-attachments/assets/486097b8-9167-40f8-a4b0-0ea86bb2f24b)
+   
 4. Let's add an account from our chain to the metamask, so we can have the funds available, Copy the private key from here.
    ![key](https://github.com/user-attachments/assets/8a1b3ba7-fea3-42e4-be8d-1ba7d6c5c97f)
+   
 5. Click Import Account in MetaMask extension
 ![key2](https://github.com/user-attachments/assets/7cbc88c8-95e4-43c3-9324-902d12870d48)
+
 6. and we have our funds in our wallet (locally only though)
    ![ether](https://github.com/user-attachments/assets/8d8c2705-f165-4570-b701-502a84c3b818)
 
