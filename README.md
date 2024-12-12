@@ -17,8 +17,8 @@ This project addresses the challenges of transparency and traceability in managi
 - **Blockchain**: Ethereum, Solidity
 - **Tools**: MetaMask, Ganache, Web3.js
 ## Pre-requisite:
-Install NodeJS in your machine: https://nodejs.org/en/download
-Install VScode in your machine: https://code.visualstudio.com/download
+- **Install NodeJS in your machine:** https://nodejs.org/en/download
+- **Install VScode in your machine:** https://code.visualstudio.com/download
 
 ## Installation
 1. Clone this repository:
