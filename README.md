@@ -1,4 +1,4 @@
-# Plateforme de Don basé sur la Blockchain | Pour l'aide aux sinistré de la RDC
+# Plateforme de Don basé sur la Blockchain | Pour l'aide aux sinistré de la RDC.
 ![issa](https://github.com/user-attachments/assets/ef1b1a44-6e6f-465e-9f8a-ffe99278fdfa)
 
 ## Introduction
