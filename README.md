@@ -2,7 +2,8 @@
 ![issa](https://github.com/user-attachments/assets/ef1b1a44-6e6f-465e-9f8a-ffe99278fdfa)
 
 ## Introduction
-This project addresses the challenges of transparency and traceability in the management of donation funds in the Democratic Republic of Congo (DRC). Based on blockchain technology, this platform ensures secure, transparent and real-time monitoring of donations, thus increasing donor confidence by reducing transaction costs.
+This project addresses the challenges of transparency and traceability in the management of donation funds in the Democratic Republic of Congo (DRC).
+Based on blockchain technology, this platform ensures secure, transparent and real-time monitoring of donations, thus increasing donor confidence by reducing transaction costs.
 
 ## Features
 - **Blockchain Technology**: Built on the Ethereum blockchain to provide an immutable and transparent record of all transactions.
